@@ -1,0 +1,12 @@
+media/
+sent_emails/
+*.pyc
+*~
+__pycache__
+*.sqlite3
+staticfiles/
+.DS_Store
+*.zip
+whoosh_index/
+local.py
+env/
