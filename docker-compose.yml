@@ -1,10 +1,10 @@
 version: '3.7'
 services:
   web:
-    build: ./app
+    build: ./website
     command: ./manage.py runserver 0.0.0.0:8000
     volumes:
-      - ./app/:/code/
+      - ./website/:/code/
     ports:
       - 8000:8000
     env_file:

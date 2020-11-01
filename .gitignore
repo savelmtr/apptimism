@@ -10,3 +10,5 @@ staticfiles/
 whoosh_index/
 local.py
 env/
+.env.prod.db
+.env.prod
