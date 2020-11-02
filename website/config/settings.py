@@ -39,8 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_registration',
     'users',
-    'auth',
+    'autenticator',
+    'base',
+    'car_rent',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +135,9 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/mediafiles/'
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
+
+# Окно регистрации пользователей
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window
+
+# Бекэнд для емэйлов
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

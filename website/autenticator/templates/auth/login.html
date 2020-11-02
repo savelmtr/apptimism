@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block sub_title %}Логин{% endblock sub_title %}
+
+
+{% block content %}
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  
+  <p><button type="submit">Войти на сайт</button></p>
+  <p>
+    <a href="{% url 'auth:registration' %}">Зарегистрироваться</a>
+    <a href="{% url 'auth:password_reset' %}">Забыли пароль</a>
+  </p>
+</form>
+{% endblock content %}
