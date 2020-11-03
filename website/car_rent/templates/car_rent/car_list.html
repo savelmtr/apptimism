@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load car_rent %}
+
+{% block content %}
+	{% language request.user.lang %}
+
+    <h2>{% translate "Cars in rent" %}</h2>
+    <section>
+    {% for car in object_list %}
+    	<div>
+	    	<b>
+		    	{% get_translated_car_name car request.user.lang %}
+	    	</b>
+	    	{% blocktranslate %} Год производства: {{ car.production_year }} {% endblocktranslate %}
+
+            {% if car.renter %}
+                
+            <i>
+                {% blocktranslate %}
+                    Renter: {{ car.renter.first_name }}
+                {% endblocktranslate %}
+            </i>
+            {% endif %}
+            <a href="{% url 'car_rent:set_renter' %}">{% translate "Set new renter" %}</a>
+    	</div>
+    {% endfor %}
+    </section>
+
+    {% endlanguage %}
+{% endblock %}

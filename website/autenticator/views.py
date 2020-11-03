@@ -11,6 +11,9 @@ from django_registration.backends.activation.views import (ActivationView,
 
 from .forms import CustomRegistrationForm
 
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
 
 class LoginPage(LoginView):
 
@@ -49,6 +52,7 @@ class ActivationComplete(TemplateView):
     template_name = 'auth/activation_complete.html'
 
 
+@method_decorator(login_required, name='dispatch')
 class PasswordChangePage(PasswordChangeView):
     
     template_name = 'auth/password_change_form.html'
@@ -58,6 +62,7 @@ class PasswordChangePage(PasswordChangeView):
     #form_class = PasswordChangeFormWithCaptcha
 
 
+@method_decorator(login_required, name='dispatch')
 class PasswordChangeDonePage(PasswordChangeDoneView):
 
     template_name = 'auth/password_change_done.html'

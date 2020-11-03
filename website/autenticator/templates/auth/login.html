@@ -9,7 +9,7 @@
   {% csrf_token %}
   {{ form.as_p }}
   
-  <p><button type="submit">Войти на сайт</button></p>
+  <p><button type="submit">{% translate "Login" %}</button></p>
   <p>
     <a href="{% url 'auth:registration' %}">Зарегистрироваться</a>
     <a href="{% url 'auth:password_reset' %}">Забыли пароль</a>

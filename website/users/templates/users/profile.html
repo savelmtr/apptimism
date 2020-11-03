@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load car_rent %}
+
+{% block content %}
+	{% language request.user.lang %}
+    <h2>{{ request.user.first_name }}</h2>
+
+  <p>
+    <a href="{% url 'auth:password_change' %}">{% translate "Change password" %}</a>
+  </p>
+
+    <h3>{% translate "Cars in rent" %}</h3>
+    <section>
+    {% for car in cars %}
+    	<div>
+	    	<b>
+		    	{% get_translated_car_name car request.user.lang %}
+	    	</b>
+	    	{% blocktranslate %} Год производства: {{ car.production_year }} {% endblocktranslate %}
+    	</div>
+    {% endfor %}
+    </section>
+
+    {% endlanguage %}
+{% endblock %}
