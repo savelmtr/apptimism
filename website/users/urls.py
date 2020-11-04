@@ -1,11 +1,12 @@
 from django.urls import path
 
-from .views import ProfileView
+from .views import Profile, EditProfile
 
 app_name = 'users'
 
 urlpatterns = [
 # Просмотр профиля
-    path('login/', ProfileView.as_view(), name='profile'),
+    path('profile/', Profile.as_view(), name='profile'),
+    path('edit/', EditProfile.as_view(), name='edit'),
 
 ]

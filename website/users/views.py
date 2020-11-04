@@ -3,7 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.shortcuts import render
-form .forms import CustomUserChangeForm
+from .forms import CustomUserChangeForm
+from django.urls import reverse_lazy
 
 
 @method_decorator(login_required, name='dispatch')
@@ -13,7 +14,7 @@ class Profile(View):
 
     def get(self, request, *args, **kwargs):
 
-        cars = request.user.car_set
+        cars = request.user.car_set.all()
         
         return render(request, self.template_name, {'cars': cars})
 
@@ -30,7 +31,7 @@ class EditProfile(View):
 
     def get(self, request, *args, **kwargs):
 
-        form = self.form_class(initial=request.user)
+        form = self.form_class(initial={'email': request.user.email, 'first_name': request.user.first_name})
         
         return render(request, self.template_name, {'form': form})
 

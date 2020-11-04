@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block sub_title %}{% translate "Edit profile" %}{% endblock %}
+
+{% block content %}
+	<h2 class="mt-4 mb-4">{% translate "Edit profile" %}</h2>
+<form method="post" >
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn btn-primary" type="submit">{% translate "Save" %}</button>
+</form>
+
+{% endblock %}

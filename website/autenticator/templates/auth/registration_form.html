@@ -1,11 +1,14 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block sub_title %}Регистрация{% endblock sub_title %}
+
+{% block sub_title %}{% translate "Registration" %}{% endblock sub_title %}
 
 {% block content %}
 <form method="post" >
+	<h2 class="mt-4 mb-4">{% translate "Registration" %}</h2>
   {% csrf_token %}
   {{ form.as_p }}
-  <p><button type="submit">Зарегистрироваться</button></p>
+  <button class="btn btn-primary" type="submit">{% translate "Register" %}</button>
 </form>
 {% endblock content %}

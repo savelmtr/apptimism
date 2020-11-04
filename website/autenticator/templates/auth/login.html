@@ -1,18 +1,20 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block sub_title %}Логин{% endblock sub_title %}
+{% block sub_title %}{% translate "Login" %}{% endblock sub_title %}
 
 
 {% block content %}
 
 <form method="post">
+	<h2 class="mt-4 mb-4">{% translate "Login" %}</h2>
   {% csrf_token %}
   {{ form.as_p }}
   
-  <p><button type="submit">{% translate "Login" %}</button></p>
-  <p>
-    <a href="{% url 'auth:registration' %}">Зарегистрироваться</a>
-    <a href="{% url 'auth:password_reset' %}">Забыли пароль</a>
+  <p><button type="submit" class="btn btn-primary">{% translate "Login" %}</button></p>
+  <p class="d-flex justify-content-between">
+    <a  href="{% url 'auth:registration' %}">{% translate "Register" %}</a>
+    <a  href="{% url 'auth:password_reset' %}">{% translate "Forget password" %}</a>
   </p>
 </form>
 {% endblock content %}

@@ -9,7 +9,7 @@ from django.views.generic.base import TemplateView
 from django_registration.backends.activation.views import (ActivationView,
                                                            RegistrationView)
 
-from .forms import CustomRegistrationForm
+from .forms import CustomRegistrationForm, LoginForm, ResetPasswordForm, ChangePasswordForm
 
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -17,7 +17,7 @@ from django.utils.decorators import method_decorator
 
 class LoginPage(LoginView):
 
-    #form_class = AuthenticationFormWithCaptcha
+    form_class = LoginForm
 
     template_name = 'auth/login.html'
 
@@ -59,7 +59,7 @@ class PasswordChangePage(PasswordChangeView):
 
     success_url = reverse_lazy('auth:password_change_done')
 
-    #form_class = PasswordChangeFormWithCaptcha
+    form_class = ChangePasswordForm
 
 
 @method_decorator(login_required, name='dispatch')
@@ -76,7 +76,7 @@ class PasswordResetPage(PasswordResetView):
     
     template_name = 'auth/password_reset_form.html'
 
-    #form_class = MyPasswordResetForm
+    form_class = ResetPasswordForm
 
     success_url = reverse_lazy('auth:password_reset_done')
 
