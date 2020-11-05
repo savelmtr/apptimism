@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.shortcuts import render
-from .forms import CustomUserChangeForm
+from .forms import UserEditForm
 from django.urls import reverse_lazy
 
 
@@ -22,7 +22,7 @@ class Profile(View):
 @method_decorator(login_required, name='dispatch')
 class EditProfile(View):
 
-    form_class = CustomUserChangeForm
+    form_class = UserEditForm
 
     success_url = reverse_lazy('users:profile')
 
@@ -31,16 +31,18 @@ class EditProfile(View):
 
     def get(self, request, *args, **kwargs):
 
-        form = self.form_class(initial={'email': request.user.email, 'first_name': request.user.first_name})
+        form = self.form_class(instance=request.user)
         
         return render(request, self.template_name, {'form': form})
 
 
     def post(self, request, *args, **kwargs):
 
-        form = self.form_class(request.POST)
+        form = self.form_class(request.POST, instance=request.user)
 
         if form.is_valid():
+
+            form.save()
 
             return HttpResponseRedirect(success_url)
 

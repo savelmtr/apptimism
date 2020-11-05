@@ -1,12 +1,12 @@
 from django.urls import path
 
-from .views import CarList
+from .views import CarList, SelectRenter
 
 app_name = 'car_rent'
 
 urlpatterns = [
 # Просмотр профиля
-    path('list/', CarList.as_view(), name='list'),
-    #path('set_renter/', SetRenter.as_view(), name='set_renter')
+    path('', CarList.as_view(), name='list'),
+    path('set_renter/<int:car_pk>/', SelectRenter.as_view(), name='select_renter')
 
 ]

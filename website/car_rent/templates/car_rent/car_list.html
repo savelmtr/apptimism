@@ -5,24 +5,26 @@
 {% block content %}
 	{% language request.user.lang %}
 
-    <h2>{% translate "Cars in rent" %}</h2>
+    <h2 class="mt-4 mb-4">{% translate "Cars in rent" %}</h2>
     <section>
     {% for car in object_list %}
     	<div>
 	    	<b>
 		    	{% get_translated_car_name car request.user.lang %}
 	    	</b>
-	    	{% blocktranslate %} Год производства: {{ car.production_year }} {% endblocktranslate %}
+	    	{% translate "Production year:" %} {{ car.production_year }}
 
             {% if car.renter %}
                 
             <i>
-                {% blocktranslate %}
-                    Renter: {{ car.renter.first_name }}
-                {% endblocktranslate %}
+                
+                {% translate "Renter:" %} {{ car.renter.first_name }}
+                
             </i>
             {% endif %}
-            <a href="{% url 'car_rent:set_renter' %}">{% translate "Set new renter" %}</a>
+            <a href="{% url 'car_rent:select_renter' %}">
+                <button class="btn btn-primary" >{% translate "Set new renter" %}</button>
+            </a>
     	</div>
     {% endfor %}
     </section>

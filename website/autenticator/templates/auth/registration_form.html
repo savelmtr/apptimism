@@ -5,8 +5,8 @@
 {% block sub_title %}{% translate "Registration" %}{% endblock sub_title %}
 
 {% block content %}
+<h2 class="mt-4 mb-4">{% translate "Registration" %}</h2>
 <form method="post" >
-	<h2 class="mt-4 mb-4">{% translate "Registration" %}</h2>
   {% csrf_token %}
   {{ form.as_p }}
   <button class="btn btn-primary" type="submit">{% translate "Register" %}</button>
