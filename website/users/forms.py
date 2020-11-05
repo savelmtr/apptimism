@@ -20,9 +20,9 @@ class CustomUserChangeForm(UserChangeForm):
         fields = ('email',)
 
 
-class UserEditForm(ModelForm)
+class UserEditForm(ModelForm):
 
-	def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['email'].validators.extend(
             (validators.HTML5EmailValidator(), validators.validate_confusables_email)

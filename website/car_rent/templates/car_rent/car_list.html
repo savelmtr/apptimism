@@ -22,7 +22,7 @@
                 
             </i>
             {% endif %}
-            <a href="{% url 'car_rent:select_renter' %}">
+            <a href="{% url 'car_rent:set_renter' car.pk %}">
                 <button class="btn btn-primary" >{% translate "Set new renter" %}</button>
             </a>
     	</div>

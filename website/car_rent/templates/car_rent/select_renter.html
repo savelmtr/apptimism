@@ -12,9 +12,8 @@
 	    	<b>
 		    	{{ user.first_name }}
 	    	</b>
-
-            {% endif %}
-            <form>
+            <form method="post">
+                {% csrf_token %}
                 <input type="hidden" name="renter" value="{{ user.pk }}">
                 <button class="btn btn-primary" >{% translate "Lease the car to this user" %}</button>
             </form>
