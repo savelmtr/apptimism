@@ -3,6 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import CustomUser
+from car_rent.admin import CarInline
 
 
 class CustomUserAdmin(UserAdmin):
@@ -24,6 +25,7 @@ class CustomUserAdmin(UserAdmin):
     )
     search_fields = ('email',)
     ordering = ('email',)
+    inlines = [CarInline]
 
 
 admin.site.register(CustomUser, CustomUserAdmin)

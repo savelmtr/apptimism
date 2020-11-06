@@ -8,7 +8,7 @@
     <h2 class="mt-4 mb-4">{% translate "Cars in rent" %}</h2>
     <section>
     {% for car in object_list %}
-    	<div>
+    	<div class="flex-row">
 	    	<b>
 		    	{% get_translated_car_name car request.user.lang %}
 	    	</b>
@@ -21,9 +21,14 @@
                 {% translate "Renter:" %} {{ car.renter.first_name }}
                 
             </i>
+            <form method="post">
+                <input type="hidden" name="car_pk" value='{{ car.pk }}'>
+                {% csrf_token %}
+                <button class="btn btn-danger m-1" >{% translate "Get car from the renter" %}</button>
+            </form>
             {% endif %}
             <a href="{% url 'car_rent:set_renter' car.pk %}">
-                <button class="btn btn-primary" >{% translate "Set new renter" %}</button>
+                <button class="btn btn-primary m-1" >{% translate "Set a new renter" %}</button>
             </a>
     	</div>
     {% endfor %}

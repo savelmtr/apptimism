@@ -12,11 +12,15 @@
 	    	<b>
 		    	{{ user.first_name }}
 	    	</b>
+            {% if car.renter.pk == user.pk %}
+                <button class="btn btn-lg m-1" disabled>{% translate "The car is already rented by this user" %}</button>            
+            {% else %}
             <form method="post">
                 {% csrf_token %}
                 <input type="hidden" name="renter" value="{{ user.pk }}">
-                <button class="btn btn-primary" >{% translate "Lease the car to this user" %}</button>
+                <button class="btn btn-primary m-1" >{% translate "Lease the car to this user" %}</button>
             </form>
+            {% endif %}
     	</div>
     {% endfor %}
     </section>

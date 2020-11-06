@@ -1,0 +1,10 @@
+{% load i18n %}
+{% load car_rent %}
+
+{% language user.lang %}
+
+{% blocktrans %}Hello, {{ user.first_name }}{% endblocktrans %}
+
+{% blocktrans %}You're receiving this email because since this day we lease you a car "{% get_translated_car_name car user.lang %}".{% endblocktrans %}
+
+{% endlanguage %}
