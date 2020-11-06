@@ -44,6 +44,6 @@ class EditProfile(View):
 
             form.save()
 
-            return HttpResponseRedirect(success_url)
+            return HttpResponseRedirect(self.success_url)
 
         return render(request, self.template_name, {'form': form})

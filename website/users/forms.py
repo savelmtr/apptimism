@@ -27,6 +27,12 @@ class UserEditForm(ModelForm):
         self.fields['email'].validators.extend(
             (validators.HTML5EmailValidator(), validators.validate_confusables_email)
         )
+        self.fields['first_name'].widget.attrs = {
+            'class': 'form-control', 'placeholder': self.fields['first_name'].label, 'required': True}
+        self.fields['first_name'].label = False
+        self.fields['email'].widget.attrs = {
+            'class': 'form-control', 'placeholder': self.fields['email'].label}
+        self.fields['email'].label = False
 
     class Meta:
         model = CustomUser
