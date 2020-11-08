@@ -139,18 +139,18 @@ MEDIA_URL = '/mediafiles/'
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
 # Окно регистрации пользователей
-ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window
+ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window
 
 # Бекэнд для емэйлов
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# REST Framework
-# Авторизация REST по токену
+#  REST Framework
+#  Авторизация REST по токену
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
-        ),
+    ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'api.backends.JWTAuthentication',
-        )
+    )
 }

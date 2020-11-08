@@ -1,11 +1,22 @@
+from car_rent.models import Car
 from django.contrib.auth import authenticate
 from rest_framework import serializers
-
-from car_rent.models import Car
 from users.models import LANGUAGES, CustomUser
 
 
 class CarSerializer(serializers.ModelSerializer):
+
+    def __init__(self, *args, user=None, **kwargs):
+        self.user = user
+        super().__init__(self, *args, **kwargs)
+
+    def to_representation(self, instance):
+        ret = super().to_representation(instance)
+        ret['name'] = ret.get(f'name_{self.user.lang}')
+        for lang in dict(LANGUAGES):
+            ret.pop(f'name_{lang}', '')
+        return ret
+
     class Meta:
         model = Car
         fields = ['name_ru', 'name_en', 'production_year', 'created_at', 'renter']

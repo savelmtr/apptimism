@@ -1,11 +1,10 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import (AuthenticationForm, PasswordChangeForm,
-                                       PasswordResetForm)
+                                       PasswordResetForm, SetPasswordForm)
 from django.utils.translation import gettext
 from django.utils.translation import gettext_lazy as _
 from django_registration import validators
-
 from users.forms import CustomUserCreationForm
 
 User = get_user_model()
@@ -21,7 +20,20 @@ class ChangePasswordForm(PasswordChangeForm):
         self.fields['new_password1'].widget.attrs = {
             'class': 'form-control', 'placeholder': self.fields['new_password1'].label}
         self.fields['new_password1'].label = False
-        self.fields['new_password2'].widget.attrs = {'class': 'form-control', 'placeholder': self.fields['new_password2'].label}
+        self.fields['new_password2'].widget.attrs = {
+            'class': 'form-control', 'placeholder': self.fields['new_password2'].label}
+        self.fields['new_password2'].label = False
+
+
+class SetNewPasswordForm(SetPasswordForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['new_password1'].widget.attrs = {
+            'class': 'form-control', 'placeholder': self.fields['new_password1'].label}
+        self.fields['new_password1'].label = False
+        self.fields['new_password2'].widget.attrs = {
+            'class': 'form-control', 'placeholder': self.fields['new_password2'].label}
         self.fields['new_password2'].label = False
 
 
@@ -40,8 +52,7 @@ class LoginForm(AuthenticationForm):
         self.fields['username'].label = False
         self.fields['username'].widget.attrs = {'class': 'form-control', 'placeholder': _("Email")}
         self.fields['password'].label = False
-        self.fields['password'].widget.attrs={'class': 'form-control', 'placeholder': _("Password")}
-
+        self.fields['password'].widget.attrs = {'class': 'form-control', 'placeholder': _("Password")}
 
 
 class CustomRegistrationForm(CustomUserCreationForm):
@@ -75,22 +86,22 @@ class CustomRegistrationForm(CustomUserCreationForm):
         email_field = User.get_email_field_name()
 
         self.fields[email_field].label = False
-        self.fields[email_field].max_length=254
-        self.fields[email_field].widget=forms.EmailInput(
+        self.fields[email_field].max_length = 254
+        self.fields[email_field].widget = forms.EmailInput(
             attrs={'class': 'form-control', 'autofocus': True, 'placeholder': _("Email")})
         self.fields[email_field].validators.extend(
             (validators.HTML5EmailValidator(), validators.validate_confusables_email)
         )
         self.fields[email_field].required = True
-        self.fields['first_name'].required=True
-        self.fields['first_name'].label=False
-        self.fields['first_name'].widget.attrs={
+        self.fields['first_name'].required = True
+        self.fields['first_name'].label = False
+        self.fields['first_name'].widget.attrs = {
             'class': 'form-control', 'placeholder': _("First name")}
-        self.fields['lang'].required=True
-        self.fields['lang'].widget.attrs={'class': 'form-control'}
+        self.fields['lang'].required = True
+        self.fields['lang'].widget.attrs = {'class': 'form-control'}
         self.fields['password1'].label = False
-        self.fields['password1'].widget=forms.PasswordInput(
+        self.fields['password1'].widget = forms.PasswordInput(
             attrs={'class': 'form-control', 'placeholder': _("Password")})
         self.fields['password2'].label = False
-        self.fields['password2'].widget=forms.PasswordInput(
+        self.fields['password2'].widget = forms.PasswordInput(
             attrs={'class': 'form-control', 'placeholder': _("Password confirmation")})

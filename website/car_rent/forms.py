@@ -17,8 +17,6 @@ class CarEditForm(ModelForm):
             'class': 'form-control', 'placeholder': self.fields['production_year'].label}
         self.fields['production_year'].label = False
 
-
     class Meta:
         model = Car
         exclude = ('created_at', 'renter')
-        #fields = ('name_ru', 'name_en', 'production_year', 'id')

@@ -10,13 +10,13 @@ from .forms import UserEditForm
 
 @method_decorator(login_required, name='dispatch')
 class Profile(View):
-    
+
     template_name = 'users/profile.html'
 
     def get(self, request, *args, **kwargs):
 
         cars = request.user.car_set.all()
-        
+
         return render(request, self.template_name, {'cars': cars})
 
 
@@ -29,13 +29,11 @@ class EditProfile(View):
 
     template_name = 'users/edit_profile.html'
 
-
     def get(self, request, *args, **kwargs):
 
         form = self.form_class(instance=request.user)
-        
-        return render(request, self.template_name, {'form': form})
 
+        return render(request, self.template_name, {'form': form})
 
     def post(self, request, *args, **kwargs):
 

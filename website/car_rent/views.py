@@ -1,7 +1,8 @@
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import get_user_model
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext
 from django.utils.translation import gettext_lazy as _
@@ -15,7 +16,6 @@ from .services import get_car_from_user, give_car_to_user
 User = get_user_model()
 
 
-
 @method_decorator(staff_member_required, name='dispatch')
 class CarList(ListView):
 
@@ -24,7 +24,7 @@ class CarList(ListView):
     queryset = Car.objects.order_by('-pk')
 
     def post(self, request, *args, **kwargs):
-        
+
         result = get_car_from_user(request.POST['car_pk'])
         if result:
             print(result)
@@ -51,7 +51,7 @@ class SelectRenter(ListView):
         return super().get(self, request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        
+
         self.object_list = User.objects.all()
         self.car_pk = kwargs['car_pk']
 
@@ -77,7 +77,7 @@ class CreateAndEditTheCar(View):
         else:
             form = self.form_class()
             regime = 0
-        
+
         return render(
             request, self.template_name, {'form': form, 'message': '', 'regime': regime})
 
@@ -95,7 +95,9 @@ class CreateAndEditTheCar(View):
         if form.is_valid():
 
             car_instance = form.save()
-            form = self.form_class(instance=car_instance)
+
+            return HttpResponseRedirect(
+                reverse_lazy('car_rent:edit_car', kwargs={'car_pk': car_instance.pk}))
 
         return render(
             request, self.template_name, {'form': form, 'message': msg, 'regime': regime})

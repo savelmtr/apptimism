@@ -1,7 +1,7 @@
 import jwt
+
 from django.conf import settings
 from rest_framework import authentication, exceptions
-
 from users.models import CustomUser
 
 
@@ -75,8 +75,8 @@ class JWTAuthentication(authentication.BaseAuthentication):
         """
         try:
             payload = jwt.decode(token, settings.SECRET_KEY)
-        except:
-            msg = 'Invalid authentication. Could not decode token.'
+        except Exception as e:
+            msg = f'Invalid authentication. Could not decode token. \n{e}'
             raise exceptions.AuthenticationFailed(msg)
 
         try:

@@ -6,7 +6,7 @@ from .views import (AdminCarsView, GetAllUsers, LoginAPIView,
 app_name = 'api'
 
 urlpatterns = [
-	path('register/', RegistrationAPIView.as_view(), name='user_registration'),
+    path('register/', RegistrationAPIView.as_view(), name='user_registration'),
     path('login/', LoginAPIView.as_view(), name='user_login'),
     path('cars/', UserCarsView.as_view(), name='cars'),
     path('cars/<int:user_pk>', AdminCarsView.as_view(), name='cars'),

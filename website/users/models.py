@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 
 import jwt
+
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -9,9 +10,10 @@ from django.utils.translation import ugettext_lazy as _
 from .managers import CustomUserManager
 
 LANGUAGES = [
-	('ru', 'Russian'),
-	('en', 'English')
+    ('ru', 'Russian'),
+    ('en', 'English')
 ]
+
 
 class CustomUser(AbstractUser):
     username = None
@@ -25,6 +27,9 @@ class CustomUser(AbstractUser):
     objects = CustomUserManager()
 
     def __str__(self):
+        return self.email
+
+    def get_username(self):
         return self.email
 
     @property

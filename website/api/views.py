@@ -1,10 +1,11 @@
+import json
+
+from car_rent.models import Car
 from django.contrib.auth import get_user_model
 from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-import json
-from car_rent.models import Car
 from users.models import CustomUser
 
 from .serializers import (CarSerializer, CustomUserSerializer, LoginSerializer,
@@ -63,8 +64,9 @@ class UserCarsView(APIView):
 
     def get(self, request):
         queryset = Car.objects.filter(renter=request.user)
-        cars = CarSerializer(queryset, many=True)
+        cars = CarSerializer(queryset, many=True, user=request.user)
         return Response(cars.data)
+
 
 class AdminCarsView(UserCarsView):
     permission_classes = (IsAdminUser, )
@@ -77,6 +79,7 @@ class AdminCarsView(UserCarsView):
         queryset = Car.objects.filter(renter=user)
         cars = CarSerializer(queryset, many=True)
         return Response(cars.data)
+
 
 class GetAllUsers(APIView):
     permission_classes = (IsAdminUser, )

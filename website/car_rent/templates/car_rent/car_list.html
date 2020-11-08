@@ -37,7 +37,7 @@
             <form method="post" class="d-inline-flex">
                 <input type="hidden" name="car_pk" value='{{ car.pk }}'>
                 {% csrf_token %}
-                <button class="btn btn-danger m-1" >{% translate "Get car from the renter" %}</button>
+                <button class="btn btn-danger m-1" >{% translate "Take car from the renter" %}</button>
             </form>
             {% endif %}
             <a href="{% url 'car_rent:set_renter' car.pk %}">
