@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,10 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_registration',
+    'rest_framework',
     'users',
     'autenticator',
     'base',
     'car_rent',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -141,3 +143,14 @@ ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window
 
 # Бекэнд для емэйлов
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# REST Framework
+# Авторизация REST по токену
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+        ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'api.backends.JWTAuthentication',
+        )
+}

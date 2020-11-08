@@ -3,8 +3,23 @@
 
 {% block sub_title %}{% translate "Edit car" %}{% endblock %}
 
+{% block messages %}
+{% if message %}
+	<div class="card-body text-white bg-info">
+        <h5 class="card-title">{{ message }}</h5>
+      </div>
+{% endif %}
+{% endblock %}
+
 {% block content %}
-	<h2 class="mt-4 mb-4">{% translate "Edit car" %}</h2>
+	<h2 class="mt-4 mb-4">
+		{% if regime %}
+			{% translate "Edit car" %}
+		{% else %}
+			{% translate "Create car" %}
+		{% endif %}
+  <a href="{% url "car_rent:list" %}"><button class="btn btn-warning m-1">{% translate "Back to the list of all cars" %}</button></a>
+  </h2>
 <form method="post" >
   {% csrf_token %}
   {{ form.as_p }}

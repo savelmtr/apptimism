@@ -8,14 +8,14 @@
     <h2 class="mt-4 mb-4">{% translate "Set new renter to car:" %} {% get_translated_car_name car request.user.lang %}</h2>
     <section>
     {% for user in object_list %}
-    	<div>
+    	<div class="flex-row">
 	    	<b>
 		    	{{ user.first_name }}
 	    	</b>
             {% if car.renter.pk == user.pk %}
-                <button class="btn btn-lg m-1" disabled>{% translate "The car is already rented by this user" %}</button>            
+                <button class="btn btn-primary m-1" disabled>{% translate "The car is already rented by this user" %}</button>            
             {% else %}
-            <form method="post">
+            <form method="post" class="d-inline-flex">
                 {% csrf_token %}
                 <input type="hidden" name="renter" value="{{ user.pk }}">
                 <button class="btn btn-primary m-1" >{% translate "Lease the car to this user" %}</button>

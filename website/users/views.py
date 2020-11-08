@@ -1,10 +1,11 @@
-from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import View
-from django.shortcuts import render
+
 from .forms import UserEditForm
-from django.urls import reverse_lazy
 
 
 @method_decorator(login_required, name='dispatch')

@@ -1,7 +1,6 @@
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from django_registration import validators
-
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 from django.forms import ModelForm
+from django_registration import validators
 
 from .models import CustomUser
 

@@ -1,4 +1,5 @@
 from django.forms import ModelForm
+
 from .models import Car
 
 
@@ -19,4 +20,5 @@ class CarEditForm(ModelForm):
 
     class Meta:
         model = Car
-        fields = ('name_ru', 'name_en', 'production_year')
+        exclude = ('created_at', 'renter')
+        #fields = ('name_ru', 'name_en', 'production_year', 'id')

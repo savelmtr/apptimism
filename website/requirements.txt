@@ -2,3 +2,5 @@ Django
 gunicorn
 psycopg2-binary
 django-registration
+PyJWT
+djangorestframework

@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import (LoginView, PasswordChangeDoneView,
                                        PasswordChangeView,
                                        PasswordResetCompleteView,
@@ -5,14 +6,13 @@ from django.contrib.auth.views import (LoginView, PasswordChangeDoneView,
                                        PasswordResetDoneView,
                                        PasswordResetView)
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views.generic.base import TemplateView
 from django_registration.backends.activation.views import (ActivationView,
                                                            RegistrationView)
 
-from .forms import CustomRegistrationForm, LoginForm, ResetPasswordForm, ChangePasswordForm
-
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
+from .forms import (ChangePasswordForm, CustomRegistrationForm, LoginForm,
+                    ResetPasswordForm)
 
 
 class LoginPage(LoginView):

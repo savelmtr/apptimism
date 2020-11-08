@@ -14,7 +14,11 @@
     <a href="{% url 'auth:password_change' %}">{% translate "Password change" %}</a>
   </p>
 
-    <h3>{% translate "Cars in rent" %}</h3>
+    <h3>{% translate "Cars in rent" %}
+        {% if request.user.is_superuser or request.user.is_stuff %}
+            <a href="{% url "car_rent:list" %}"><button class="btn btn-warning m-1">{% translate "To the list of all cars" %}</button></a>
+        {% endif %}
+    </h3>
     <section>
     {% for car in cars %}
     	<div>

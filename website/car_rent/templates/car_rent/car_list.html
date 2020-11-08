@@ -5,14 +5,27 @@
 {% block content %}
 	{% language request.user.lang %}
 
-    <h2 class="mt-4 mb-4">{% translate "Cars in rent" %}</h2>
+    <h2 style='position:relative'class="mt-4 mb-4">{% translate "All the cars" %}
+
+    <a href="{% url "car_rent:create_car" %}">
+        <button title="{% translate "Add a car" %}" type="button" style='position: absolute; top:0; right:0; display:flex; align-items:center; justify-content:center; width:3rem; height:3rem; border-radius:50%' class="btn btn-warning" aria-label="Left Align">
+        <svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 0 448 448" width="2rem"><path d="m408 184h-136c-4.417969 0-8-3.582031-8-8v-136c0-22.089844-17.910156-40-40-40s-40 17.910156-40 40v136c0 4.417969-3.582031 8-8 8h-136c-22.089844 0-40 17.910156-40 40s17.910156 40 40 40h136c4.417969 0 8 3.582031 8 8v136c0 22.089844 17.910156 40 40 40s40-17.910156 40-40v-136c0-4.417969 3.582031-8 8-8h136c22.089844 0 40-17.910156 40-40s-17.910156-40-40-40zm0 0"/></svg>
+        </button>
+    </a>
+    </h2>
+
     <section>
     {% for car in object_list %}
     	<div class="flex-row">
+            <a href="{% url 'car_rent:edit_car' car.pk %}">
+                <button class="btn btn-warning m-1" >{% translate "Edit car" %}</button>
+            </a>
 	    	<b>
 		    	{% get_translated_car_name car request.user.lang %}
 	    	</b>
 	    	{% translate "Production year:" %} {{ car.production_year }}
+
+            {% translate "Available on this site since:" %} {{ car.created_at }}            
 
             {% if car.renter %}
                 
@@ -21,7 +34,7 @@
                 {% translate "Renter:" %} {{ car.renter.first_name }}
                 
             </i>
-            <form method="post">
+            <form method="post" class="d-inline-flex">
                 <input type="hidden" name="car_pk" value='{{ car.pk }}'>
                 {% csrf_token %}
                 <button class="btn btn-danger m-1" >{% translate "Get car from the renter" %}</button>

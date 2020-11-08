@@ -1,10 +1,12 @@
-from django_registration import validators
-from django.utils.translation import gettext, gettext_lazy as _
 from django import forms
 from django.contrib.auth import get_user_model
-from users.forms import CustomUserCreationForm
-from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm, PasswordChangeForm
+from django.contrib.auth.forms import (AuthenticationForm, PasswordChangeForm,
+                                       PasswordResetForm)
+from django.utils.translation import gettext
+from django.utils.translation import gettext_lazy as _
+from django_registration import validators
 
+from users.forms import CustomUserCreationForm
 
 User = get_user_model()
 
