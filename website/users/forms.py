@@ -35,4 +35,4 @@ class UserEditForm(ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ('first_name', 'email', )
+        fields = ('first_name', 'email', 'lang')

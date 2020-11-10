@@ -1,5 +1,10 @@
-Для завершения регистрации на сайте {{ site.name }} активируйте свой аккаунт {{ user }}, перейдя по ссылке:
+{% load i18n %}
 
-{{ site.name }}/accounts/activate/{{ activation_key }}
+{% blocktranslate %}
+    To finish your registration on the site {{ site.name }}, please, bo so kind to activate your account {{ user }} by follow on link:
 
-Действие кода для активации истечёт через {{ expiration_days }} дней.
+    {{ site.name }}/accounts/activate/{{ activation_key }}
+
+    The code will expire in {{ expiration_days|slugify }} days.
+
+{% endblocktranslate %}

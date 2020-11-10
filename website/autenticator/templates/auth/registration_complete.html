@@ -1,11 +1,13 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block sub_title %}{{activation_error.message}}{% endblock sub_title %}
 
 {% block messages %}
 <div class="alert ">
-      <h3>Аккаунт успешно зарегистрирован</h3>
+      <h3>{% translate "The account is successfully registrated" %}</h3>
 <p >
-Мы отправили вам письмо со ссылкой, перейдите по ней для активации аккаунта.</p>
+{% translate "We've sent you a letter with link, follow it to activate the account." %}
+</p>
 </div>
 {% endblock messages %}

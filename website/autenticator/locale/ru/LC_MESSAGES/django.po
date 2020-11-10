@@ -1,0 +1,177 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-10 23:04+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: forms.py:45 forms.py:53 forms.py:91
+msgid "Email"
+msgstr "Адрес электронной почты"
+
+#: forms.py:55 forms.py:104
+msgid "Password"
+msgstr "Пароль"
+
+#: forms.py:99
+msgid "First name"
+msgstr "Имя"
+
+#: forms.py:107
+msgid "Password confirmation"
+msgstr "Подтверждение пароля"
+
+#: templates/auth/activation_complete.html:10
+msgid "The account is successfully activated"
+msgstr "Аккаунт успешно активирован"
+
+#: templates/auth/activation_email_body.txt:3
+#, python-format
+msgid ""
+"\n"
+"    To finish your registration on the site %(site.name)s, please, bo so "
+"kind to activate your account %(user)s by follow on link:\n"
+"\n"
+"    %(site.name)s/accounts/activate/%(activation_key)s\n"
+"\n"
+"    The code will expire in %(expiration_days|slugify)s days.\n"
+"\n"
+msgstr ""
+"\n"
+"    Для завершения регистрации на сайте %(site.name)s активируйте свой аккаунт "
+"%(user)s, перейдя по ссылке:\n"
+"\n"
+"    %(site.name)s/accounts/activate/%(activation_key)s\n"
+"\n"
+"    Действие кода для активации истечёт через %(expiration_days|slugify)s дней.\n"
+"\n"
+
+#: templates/auth/activation_email_subject.txt:2
+msgid "Registration on"
+msgstr "Регистрация на сайте"
+
+#: templates/auth/activation_failed.html:11
+msgid "Parameters:"
+msgstr "Параметры:"
+
+#: templates/auth/activation_failed.html:12
+msgid "Error code:"
+msgstr "Код ошибки:"
+
+#: templates/auth/login.html:4 templates/auth/login.html:10
+#: templates/auth/login.html:14
+msgid "Login"
+msgstr "Логин"
+
+#: templates/auth/login.html:16 templates/auth/registration_form.html:12
+msgid "Register"
+msgstr "Зарегистрироваться"
+
+#: templates/auth/login.html:17
+msgid "Forget password"
+msgstr "Забыли пароль"
+
+#: templates/auth/password_change_complete.html:11
+#: templates/auth/password_reset_complete.html:9
+msgid "New password is set. Use it to "
+msgstr "Установлен новый пароль. Используйте его, чтобы"
+
+#: templates/auth/password_change_complete.html:11
+#: templates/auth/password_reset_complete.html:9
+msgid "login"
+msgstr "войти на сайт"
+
+#: templates/auth/password_change_form.html:4
+#: templates/auth/password_change_form.html:8
+msgid "Password change"
+msgstr "Смена пароля"
+
+#: templates/auth/password_change_form.html:11
+#: templates/auth/password_reset_confirm.html:13
+msgid "Change password"
+msgstr "Поменять пароль"
+
+#: templates/auth/password_reset_confirm.html:4
+#: templates/auth/password_reset_confirm.html:10
+#: templates/auth/password_reset_form.html:4
+#: templates/auth/password_reset_form.html:8
+msgid "Reset password"
+msgstr "Сбросить пароль"
+
+#: templates/auth/password_reset_confirm.html:19
+msgid ""
+"Wrong link to reset password. Maybe it was already used. Please, be so kind "
+"and request"
+msgstr ""
+"Неправильная ссылка на изменение пароля. Возможно, она уже была однажды использована. "
+"Запросите"
+
+#: templates/auth/password_reset_confirm.html:19
+msgid "reset password"
+msgstr "сброс пароля"
+
+#: templates/auth/password_reset_confirm.html:19
+msgid "again"
+msgstr "снова"
+
+#: templates/auth/password_reset_done.html:9
+msgid "Just check your mail."
+msgstr "Просто проверьте свою почту."
+
+#: templates/auth/password_reset_email.html:2
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+"Вы получили это письмо, так как запросили сброс пароля для вашего "
+"аккаунта на сайте %(site_name)s."
+
+#: templates/auth/password_reset_email.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr "Пройдите по ссылке и введите новый пароль:"
+
+#: templates/auth/password_reset_email.html:10
+msgid "Thanks for using our site!"
+msgstr "Спасибо за использование нашего сайта!"
+
+#: templates/auth/password_reset_email.html:12
+#, python-format
+msgid "The %(site_name)s team"
+msgstr "Команда %(site_name)s"
+
+#: templates/auth/password_reset_form.html:11
+msgid "Send email to reset password"
+msgstr "Послать письмо для сброса пароля"
+
+#: templates/auth/password_reset_subject.txt:1
+msgid "Password reset on"
+msgstr "Сброс пароля на сайте "
+
+#: templates/auth/registration_complete.html:8
+msgid "The account is successfully registrated"
+msgstr "Аккаунт успешно зарегистрирован"
+
+#: templates/auth/registration_complete.html:10
+msgid "We've sent you a letter with link, follow it to activate the account."
+msgstr "Мы послали вам письмо со ссылкой. Перейдите по ней, чтобы активировать аккаунт."
+
+#: templates/auth/registration_form.html:5
+#: templates/auth/registration_form.html:8
+msgid "Registration"
+msgstr "Регистрация"

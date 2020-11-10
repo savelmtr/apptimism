@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block sub_title %}{{title}}{% endblock %}
 
@@ -6,7 +7,7 @@
 <div class="alert">
       <h3>{{title}}</h3>
 <p >
-Аккаунт успешно активирован.
+{% translate "The account is successfully activated" %}
   </p>
 </div>
 {% endblock %}
